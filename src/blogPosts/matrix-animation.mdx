@@ -1,0 +1,98 @@
+---
+slug: matrix-animation
+title: Matrix Animation
+description: Add matrix animation on your site in just few easy steps
+date: 13/08/2023
+---
+
+import Divider from "../components/Divider.astro";
+import MatrixAnimation from "../components/MatrixAnimation.astro";
+
+Publish on :- {frontmatter.date}
+
+<br />
+Do you ever wonder how can you add the matrix animation to your website. I do, so
+i create this.
+
+<br />
+<div style="width: 250px; height: 250px; margin-inline: auto;">
+	<MatrixAnimation />
+</div>
+<br />
+
+To recreate this you need a Canvas tag inside your HTML, few lines of CSS to style it as you want and few lines of JavaScript
+
+> You might have this question in your mind - "Why canvas tag ? can't I do that without casvas tag ?"
+
+> Yes, you can do this without using canvas tag. But the canvas make it easy to do.
+
+<Divider />
+
+1. First, we get a reference to the canvas element and its 2D context, which we'll
+   use to draw on the canvas:
+
+```javascript
+const canvas = document.getElementById("canvas");
+const ctx = canvas.getContext("2d");
+```
+
+2. Next, we define some variables that will be used in the animation. The `fontSize` variable determines the size of the characters that will be drawn on the canvas. The `columns` variable calculates the number of columns that can fit on the canvas based on its width and the font size. The `drops` array will keep track of the y-coordinate of each column:
+
+```javascript
+const fontSize = 10;
+const columns = canvas.width / fontSize;
+const drops = [];
+```
+
+3. We then initialize the `drops` array with a value of 1 for each column:
+
+```javascript
+for (let x = 0; x < columns; x++) {
+	drops[x] = 1;
+}
+```
+
+4. The `draw` function is where the magic happens. This function will be called repeatedly to update the animation on the canvas. First, we set the fill style of the context to a semi-transparent black color and fill the entire canvas with it. This creates a fading effect for the characters as they fall down the canvas:
+
+```javascript
+function draw() {
+    ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+```
+
+5. Next, we set the fill style to green and the font to an Arial font with a size determined by the `fontSize` variable:
+
+```javascript
+ctx.fillStyle = "#0f0";
+ctx.font = fontSize + "px arial";
+```
+
+6. We then loop through each column and draw a random character at its current position. The character is chosen by generating a random number between 33 and 126 (the ASCII codes for printable characters) and converting it to a string using the `String.fromCharCode` method:
+
+```javascript
+    for (let i = 0; i < drops.length; i++) {
+        const text = String.fromCharCode(Math.floor(Math.random() * 94 + 33));
+        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+```
+
+7. After drawing the character, we check if it has reached the bottom of the canvas. If it has, and if a random number is greater than 0.975, we reset its position to 0 so that it starts falling from the top again:
+
+```javascript
+if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+	drops[i] = 0;
+}
+```
+
+8. Finally, we increment the y-coordinate of each column so that the characters move down by one row on each iteration:
+
+```javascript
+        drops[i]++;
+    }
+}
+```
+
+9. To start the animation, we use the `setInterval` function to call the `draw` function every 33 milliseconds:
+
+```javascript
+setInterval(draw, 33);
+```

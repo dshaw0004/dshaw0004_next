@@ -1,0 +1,9 @@
+.blogPage {
+	min-height: 100vh;
+	padding-inline: 1em;
+	min-height: 100dvh;
+}
+.blogLinkCard {
+	width: clamp(150px, 90%, 400px);
+	border: 1px solid currentColor;
+}

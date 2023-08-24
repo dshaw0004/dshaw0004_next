@@ -1,0 +1,57 @@
+.header {
+	display: flex;
+	padding: 0.5ch 1ch;
+	align-items: center;
+}
+.backBtn {
+	border: 1px solid currentColor;
+	border-radius: 1ch;
+	padding: 0 0.75ch;
+	font-size: larger;
+}
+.heading {
+	font-size: xx-large;
+	flex-grow: 1;
+}
+.mainContent {
+	width: clamp(200px, 90%, 800px);
+}
+.mainContent code {
+	outline: 1px solid grey;
+	padding: 1ch;
+	display: block;
+	width: clamp(160px, 96%, 700px);
+	overflow-x: scroll;
+
+	margin-block: 1ch;
+}
+.mainContent code::-webkit-scrollbar {
+	height: 4px;
+}
+.mainContent code::-webkit-scrollbar-track {
+	background-color: transparent;
+}
+.mainContent code::-webkit-scrollbar-thumb {
+	background-color: currentColor;
+}
+.mainContent img {
+	display: block;
+	width: min(700px, 90%);
+	margin: 1ch auto;
+}
+.mainContent h2 {
+	margin-block: 2ch 1ch;
+	font-weight: 500;
+	font-size: larger;
+}
+.mainContent h3 {
+	margin-block: 1.5ch 0.75ch;
+	font-weight: 400;
+	font-size: large;
+}
+.mainContent h4 {
+	margin-block: 1ch 0.5ch;
+	font-size: medium;
+}
+/* .publishedDate {
+} */

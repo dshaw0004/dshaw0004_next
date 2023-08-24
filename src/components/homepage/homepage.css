@@ -1,0 +1,89 @@
+.aboutSection {
+	display: grid;
+	grid-template-columns: 2fr 3fr;
+	justify-content: space-around;
+	align-items: center;
+	box-sizing: border-box;
+	padding-inline: 1em;
+}
+.aboutSection img {
+	display: block;
+	margin: auto;
+	width: min(90%, 300px);
+	border-radius: 1rem;
+}
+.aboutSection .bio {
+	text-align: justify;
+}
+.aboutSection .bio strong {
+	color: antiquewhite;
+}
+@media screen and (max-width: 800px) {
+	.aboutSection {
+		grid-template-columns: auto;
+		grid-template-rows: 3fr 2fr;
+	}
+}
+.contactSection {
+	display: grid;
+	grid-template-areas: "header header header" "chat chat social" "chat chat social" "chat chat telegramBot" "footer footer footer";
+}
+h3 {
+	text-align: center;
+}
+@media screen and (max-width: 500px) {
+	.contactSection {
+		grid-template-areas: "header" "social" "social" "chat" "telegramBot" "footer";
+	}
+}
+.contactSection h2 {
+	grid-area: header;
+}
+.contactSection .message_area {
+	grid-area: chat;
+}
+.contactSection .message_area form {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	row-gap: 0.5em;
+	width: min(500px, 96%);
+	margin-inline: auto;
+}
+.contactSection .message_area form textarea {
+	resize: none;
+}
+.contactSection .message_area form div:has(input[value="submit"]) {
+	text-align: center;
+}
+
+.contactSection .chat_bot_link_container {
+	grid-area: telegramBot;
+}
+.contactSection .chat_bot_link_container .chat_bot {
+	background-color: beige;
+	padding: 0.25ch 1ch;
+	border-radius: 0.5ch;
+	color: #123456;
+}
+.chat_bot a {
+	color: inherit;
+}
+.contactInfo {
+	grid-area: social;
+	font-size: larger;
+}
+.contactInfo > div {
+	width: -moz-fit-content;
+	width: fit-content;
+	margin-inline: auto;
+}
+.contactInfo > div > div {
+	display: flex;
+	-moz-column-gap: 1em;
+	column-gap: 1em;
+	font-size: inherit;
+}
+.contactInfo > div > div i + a {
+	color: inherit;
+}
